@@ -1,3 +1,4 @@
+import CartWidget from '../CartWidget/CartWidget';
 import './Navbar.css';
  
 const Navbar = () => {
@@ -6,7 +7,8 @@ const Navbar = () => {
            <h1>Ecommerce</h1>
            <button>Demo1</button>
            <button>Demo2</button>
-           <button>Demo3</button> 
+           <button>Demo3</button>
+           <CartWidget /> 
         </nav>
     );
 };
