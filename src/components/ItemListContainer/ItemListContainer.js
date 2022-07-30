@@ -1,12 +1,13 @@
 import './ItemListContainer.css';
+import ItemList from '../ItemList/ItemList';
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
     return(
-    <>
-    <h2>
-        {greeting}
-    </h2>
-    </>
+    <section className='itemListContainer'>
+        <h2>Demo de productos</h2>
+        <ItemList />
+
+    </section>
     );
 };
 
