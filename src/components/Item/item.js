@@ -1,16 +1,17 @@
 import ItemCount from '../ItemCount/ItemCount';
+import './Item.css' 
 
-const Item = ({id, name, price, stock, thumbnail}) => {
+const Item = ({product}) => {
     const onAdd = (count) => {
         console.log( `${count} products added` );
       };
     return(
-        <div>
-            <img src= {thumbnail} />
-            <h3>{name}</h3>
-            <p>${price}</p>
+        <li>
+            <img src= {product.thumbnail} />
+            <h3>{product.name}</h3>
+            <p>${product.price}</p>
             <ItemCount initial={1} stock={7} onAdd={onAdd} />
-        </div>
+        </li>
     );  
 };
 export default Item;

@@ -1,4 +1,4 @@
-const productList = [
+const products = [
     {
         id: 1,
         name: 'Product1',
@@ -21,4 +21,10 @@ const productList = [
         thumbnail:  'https://www.penguinlibros.com/ar/929197-home_default/stella.jpg',
     },
 ];
-export default productList;
+export const productList = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(products)
+        }, 3000)
+    })
+};                           
