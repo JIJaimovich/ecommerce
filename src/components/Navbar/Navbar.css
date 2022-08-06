@@ -1,9 +1,19 @@
 .Navbar{
-    
     display: flex;
     justify-content: space-around;
+    align-items: center;
     margin-top: 15px;
 }
-button{
-    height: 50px;
+
+.menu {
+    text-decoration: none;
+    color: black;
+    font-size: 22px;
+    padding: 10px;
+}
+.menu:hover{
+    font-size: 24px;
+}
+h1{
+    font-size: 30px;
 }

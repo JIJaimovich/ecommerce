@@ -8,7 +8,7 @@ const ItemList = ({ products }) => {
       {products.map(prod =>
         <Item
           key={prod.id}
-          product={prod}
+          {...prod}
         />
       )
       }

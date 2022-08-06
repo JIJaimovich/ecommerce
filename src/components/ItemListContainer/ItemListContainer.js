@@ -1,21 +1,26 @@
-import './ItemListContainer.css';
 import { useState, useEffect } from 'react';
-import {productList} from '../../data/data';
+import { productList, getProductsByCategory } from '../../data/data';
+import { useParams } from 'react-router-dom';                           
 import ItemList from '../ItemList/ItemList';
+import './ItemListContainer.css';
 
 const ItemListContainer = () => {
-    const [products, setProducts] = useState( [] );
+    const [products, setProducts] = useState([]);
+    const { categoryId } = useParams();
     useEffect(() => {
-        productList().then(products => {
+        const asyncFunction = categoryId ? getProductsByCategory : productList
+        asyncFunction(categoryId).then(products => {
             setProducts(products)
+        }).catch(error => {
+            console.log(error)
         })
-    }, [])
-    return(
-    <>
-        <h2>Demo de productos</h2>
-        <ItemList products={products}/>
+    }, [categoryId])
+    return (
+        <>
+            <h2 className='leyenda'>Todos los productos</h2>
+            <ItemList products={products} />
 
-    </>
+        </>
     );
 };
 
