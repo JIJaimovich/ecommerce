@@ -2,11 +2,13 @@
 
 This project is being built
 
-## Running Locally
+## Running Locally<br/>
 
-$ git clone https://github.com/JIJaimovich/ecommerce.git
-$ cd ecommerce
-$ npm install
-$ npm start
+$ git clone https://github.com/JIJaimovich/ecommerce.git<br/>
+
+ $ cd ecommerce<br/>
+ $ npm install<br/>
+ $ npm start<br/>
 
 ## GIF sample
+https://github.com/JIJaimovich/ecommerce/blob/desafio4/public/gif/20220805_212720.gif
