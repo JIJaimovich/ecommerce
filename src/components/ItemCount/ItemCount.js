@@ -1,32 +1,32 @@
 import { useState } from 'react';
 
-const ItemCount = ({initial, onAdd, stock}) => {
-    const [count, setCount] = useState(initial);
-    const addAndRemove = (num) => {
-        setCount(count+num);
-    };
+const ItemCount = ({stock = 0, initial = 1, onAdd})=> {
+    const [quantity, setQuantity] = useState(initial)
+ 
+    const increment = () => {
+        if(quantity < stock) {
+            setQuantity(quantity+1)
+        }
+    }
+ 
+    const decrement = () => {
+        if(quantity > 1) {
+            setQuantity(quantity - 1)
+        }     
+    }
+ 
     return(
-        <div className='itemCounter'>
-            <button 
-            onClick={ () => addAndRemove(-1) }
-            disabled={ count === initial}
-            >
-            -    
-            </button>
-            <span> {count} </span>
-            <button 
-            onClick={ () => addAndRemove(+1) }
-            disabled={ count === stock}
-            >
-            +    
-            </button>
-            <button 
-            onClick={ () =>{ onAdd(count)} }
-            disabled={stock === 0 ? true : null}
-            >
-            Add    
-            </button>
+        <div className='Counter'>          
+             <div className='Controls'>
+                 <button className="Button" onClick={decrement}>-</button>
+                 <h4 className='Number'>{quantity}</h4>
+                 <button className="Button" onClick={increment}>+</button>
+             </div>
+             <div>
+                 <button className="Button" onClick={() => onAdd(quantity)}>Agregar al carrito</button>
+             </div>
         </div>
     );
-};
-export default ItemCount;
+ 
+ }
+ export default ItemCount; 
