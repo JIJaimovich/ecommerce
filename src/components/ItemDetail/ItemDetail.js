@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import CartContext from '../../context/CartContext';
+import NotificationContext from '../../notification/notification';
 
 
 const ItemDetail = ({ id, name, category, img, description, price, stock }) => {
@@ -17,6 +18,7 @@ const ItemDetail = ({ id, name, category, img, description, price, stock }) => {
         };
 
         addItem(productToAdd);
+        setNotification('success', `Se agregaron ${quantity} ${name}`);
     };
 
     const productQuantity = getProductQuantity(id);

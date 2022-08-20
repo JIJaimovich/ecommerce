@@ -1,12 +1,11 @@
 
 import { Link } from 'react-router-dom';
-import './Item.css'
+import './Item.css';
  
 
 const Item = ({id, name, img, price }) => {
     const handleClick = (e) => {
         e.stopPropagation()
-        // console.log('hice click en item')
     };
     return(
         <article className="CardItem" onClick={handleClick}>
