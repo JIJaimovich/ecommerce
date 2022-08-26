@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-//import { productList, getProductsByCategory } from '../../data/data';
 import { useParams } from 'react-router-dom';
 import { getDocs, collection, query, where } from 'firebase/firestore';
 import { db } from '../../service/firebase';
 import ItemList from '../ItemList/ItemList';
 import './ItemListContainer.css';
 
-const ItemListContainer = () => {
+const ItemListContainer = ({msg}) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const { categoryId } = useParams();
@@ -29,15 +28,6 @@ const ItemListContainer = () => {
             setLoading(false)
         });
 
-
-        
-
-        // const asyncFunction = categoryId ? getProductsByCategory : productList
-        // asyncFunction(categoryId).then(products => {
-        //     setProducts(products)
-        // }).catch(error => {
-        //     console.log(error)
-        // })
     }, [categoryId]);
 
     if(loading) {
@@ -46,7 +36,9 @@ const ItemListContainer = () => {
 
     return (
         <>
-            <h2 className='leyenda'>Todos los productos</h2>
+            
+            <h1>{`${msg} ${categoryId || ''}`}</h1> 
+            {/* <h2 className='leyenda'>Todos los productos</h2>  */}
             <ItemList products={products} />
 
         </>

@@ -7,9 +7,8 @@ import NotificationContext from '../../notification/notification';
 
 const ItemDetail = ({ id, name, category, img, description, price, stock }) => {
     const [quantityToAdd, setQuantityToAdd] = useState(0);
-
     const { addItem, getProductQuantity } = useContext(CartContext);
-
+    const { setNotification } = useContext(NotificationContext);
     const handleOnAdd = (quantity) => {
         setQuantityToAdd(quantity);
 
