@@ -1,8 +1,8 @@
 import { useState, useEffect} from 'react';
-import ItemDetail from '../ItemDetail/ItemDetail';
 import { useParams } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
-import { db } from '../../service/firebase';
+import { db } from '../../services/firebase';
+import ItemDetail from '../ItemDetail/ItemDetail';
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState();
@@ -11,15 +11,19 @@ const ItemDetailContainer = () => {
 
     useEffect(() => {
         getDoc(doc(db, 'products', productId)).then(response => {
-            const data = response.data()
-            const productAdapted = { id: response.id, ...data}
-            setProduct(productAdapted)
+            const data = response.data();
+            const productAdapted = { id: response.id, ...data};
+            setProduct(productAdapted);
         }).catch(error => {
-            console.log(error)
+            console.log(error);
         }).finally(() => {
-            setLoading(false)
+            setLoading(false);
         });
     }, [productId]);
+    
+    if(loading) {
+        return <h1>Cargando...</h1>
+    };
 
     return (
         <div>
