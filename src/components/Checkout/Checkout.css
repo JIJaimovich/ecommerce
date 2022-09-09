@@ -1,0 +1,14 @@
+.checkoutContainer{
+    height: 70vh;    
+}
+.checkOut{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.order{
+    margin-bottom: 400px;
+}

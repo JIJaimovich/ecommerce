@@ -1,11 +1,12 @@
 
 import Item from '../Item/Item';
 import { memo } from 'react';
+import './ItemList.css';  
 
 
 const ItemList = ({ products }) => {
   return (
-    <ul>
+    <div className='listContainer'>
       {products.map(prod =>
         <Item
           key={prod.id}
@@ -13,7 +14,7 @@ const ItemList = ({ products }) => {
         />
       )
       }
-    </ul>
+    </div>
   );
 };
 

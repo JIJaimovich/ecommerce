@@ -1,8 +1,13 @@
 img {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
 }
 .CartWidget{
     display: flex;
-    
+    align-items: center;
+    text-decoration: none;
+    color: rgb(12, 143, 236);
+    font-weight: bold;
+    gap:10px;
 }

@@ -1,9 +1,10 @@
 import { useState, useContext } from "react";
 import CartContext from "../../context/CartContext";
-import { getProducts } from "../../services/firebase/firestore";    
 import { db } from "../../services/firebase";
-import { addDoc, collection, updateDoc, doc, getDocs, query, where, documentId, writeBatch } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where, documentId, writeBatch } from "firebase/firestore";
 import { useNavigate } from 'react-router-dom';
+import './Checkout.css';
+import { Footer } from "../Footer/Footer";
 
 const Checkout = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -13,15 +14,32 @@ const Checkout = () => {
     const totalQuantity = getQuantity();
     const total = getTotal();
 
+    const userDefault={
+        firstName:"",
+        lastName:"",
+        email:"",
+    };
+    const [user, setUser]=useState(userDefault);
+    const formEvent=(e)=>{
+        const{name, value} = e.target;
+        setUser({...user,[name]:value});
+    };
+    const userData=(e)=>{
+        e.preventDefault();
+        setUser(userDefault)
+    };
+    const firstName = user.firstName;
+    const lastName = user.lastName;
+    const email = user.email;
+
     const createOrder = async () => {
         setIsLoading(true);
         try {
             const objOrder = {
                 buyer: {
-                    firstName: 'Juan',
-                    lastName: 'Perez',
-                    phone: '23132',
-                    address: 'direccion 13'
+                    firstName,
+                    lastName,
+                    email,
                 },
                 items: cart,
                 totalQuantity,
@@ -72,19 +90,30 @@ const Checkout = () => {
     };
 
     if(isLoading) {
-        return <h1>Se esta generando tu orden...</h1>
+        return <h1>Procesando su orden.</h1>
     };
 
     if(orderCreated) {
-        return <h1>La orden fue creada correctamente, sera redirigido al listado de productos en 3 segundos</h1>
+        return <h1>Su orden fue generada, será redirigido al inicio.</h1>
     };
 
     return (
-        <>
-            <h1>Checkout</h1>
-            <h2>Formulario</h2>
-            <button className="Option" onClick={createOrder}>Generar Orden</button>
-        </>
+        <div className="checkoutContainer">
+            <h1 className="checkoutTitle">Formulario de compra</h1>
+            <form className="checkOut" onSubmit={userData}>
+                <div>
+                    <input name="firstName" type="text" placeholder="First Name" value={user.firstName} onChange={formEvent}></input>
+                </div>
+                <div>
+                    <input name="lastName" type="text" placeholder="Last Name" value={user.lastName} onChange={formEvent}></input>
+                </div>
+                <div>
+                    <input name="email" type="text" placeholder="E-mail" value={user.email} onChange={formEvent}></input>
+                </div>
+            </form>
+            <button className="order" onClick={createOrder}>Confirmar</button>
+            <Footer/>
+        </div>
     )
 };
 

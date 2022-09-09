@@ -22,7 +22,7 @@ const CartItem = ({ id, name, quantity, price }) => {
                     Cantidad: {quantity}
                 </p>
                 <p>
-                    Precio x Unidad: ${price}
+                    Precio por Unidad: ${price}
                 </p>
             </section>           
             <footer>

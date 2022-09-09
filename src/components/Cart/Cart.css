@@ -1,0 +1,7 @@
+.cart{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 15px;
+    height: 70vh;
+}

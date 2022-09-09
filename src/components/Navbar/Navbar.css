@@ -1,19 +1,28 @@
-.Navbar{
+.navbar{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 15px;
+    margin-top: 12px;
+    background-color: rgb(238, 238, 238);
 }
 
-.menu {
-    text-decoration: none;
-    color: black;
-    font-size: 22px;
-    padding: 10px;
-}
-.menu:hover{
-    font-size: 24px;
-}
+
 h1{
-    font-size: 30px;
+    font-size: 27px;
 }
+.categories{
+    display: flex;
+    flex-direction: row;
+    gap:23px;
+    font-size: 20px;
+    font-weight: bold;      
+}
+.random{
+    text-decoration: none;
+    color: rgb(12, 143, 236);
+}
+
+.selected{
+    color: rgb(44, 99, 138);
+}
+

@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import ItemCount from '../ItemCount/ItemCount';
 import CartContext from '../../context/CartContext';
 import NotificationContext from '../../notification/notification';
+import './ItemDetail.css';  
 
 
 const ItemDetail = ({ id, name, category, img, description, price, stock }) => {
@@ -17,14 +18,14 @@ const ItemDetail = ({ id, name, category, img, description, price, stock }) => {
         };
 
         addItem(productToAdd);
-        setNotification('success', `Se agregaron ${quantity} ${name}`);
+        setNotification('success', `Se agregó ${quantity} ${name}`);
     };
 
     const productQuantity = getProductQuantity(id);
 
 
     return (
-        <article>
+        <article className='detail'>
             <header>
                 <h2>{name}</h2>
             </header>
